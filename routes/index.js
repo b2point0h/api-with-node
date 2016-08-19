@@ -1,6 +1,7 @@
 "use strict";
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 var Twitter = require('twitter');
 var twitterKeys = require('../twitter-config.json');
 
@@ -53,7 +54,6 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			  if (!error) {
 			  	var messagesArray = [];
 			  	var messagesObject;
-			  	
 			  	for (var i = 0; i < messages.length; i++) {
 			  		messagesObject = {
 			  			userAvatar: messages[i].sender.profile_image_url_https,
@@ -62,11 +62,10 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			  			timeSent: messages[i].sender.created_at	
 			  		};
 			  		messagesArray.push(messagesObject);
-			  	}
-			  	// console.log(messages[0].sender.profile_image_url);
-			  	
+			  	}			  	
 				router.get('/', function(req, res){
 			      res.render('index', {
+			      	moment: moment,
 			        userAvatar: userAvatar,
 			        userName: userName,
 			        realName: realName,

@@ -45,7 +45,7 @@ block content
 				ul.app--tweet--list
 					each tweet in tweetsArray
 						li
-							strong.app--tweet--timestamp #{tweet.tweetTime}
+							strong.app--tweet--timestamp #{moment(tweet.tweetTime).fromNow()}
 							a.app--tweet--author
 								.app--avatar(style='background-image: url(#{userAvatar})')
 									img(src='#{userAvatar}')
@@ -104,4 +104,4 @@ block content
 									.app--avatar(style="background-image: url(#{message.userAvatar})")
 										img(src='#{message.userAvatar}')
 									p.app--message--text #{message.userMessage}
-									p.app--message--timestamp #{message.timeSent}
+									p.app--message--timestamp #{moment(message.timeSent).fromNow()}
