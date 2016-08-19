@@ -1,3 +1,4 @@
+"use strict";
 var express = require('express');
 var router = express.Router();
 var Twitter = require('twitter');
@@ -25,7 +26,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 		    tweetText: tweets[i].text,
 		    retweets: tweets[i].retweet_count,
 		    likes: tweets[i].favorite_count
-  		}
+  		};
   		tweetsArray.push(tweetsObject);
   	}
        
@@ -47,7 +48,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 		  			realName: friends.users[i].name,
 		  			userName: friends.users[i].screen_name,
 		  			userAvatar: friends.users[i].profile_image_url	
-		  		}
+		  		};
 		  		followersArray.push(followersObject);
 		  	}
  			client.get('direct_messages', params, function(error, messages, response) {
@@ -61,7 +62,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			  			userMessage: messages[i].text,
 			  			userName: messages[i].sender.name,
 			  			timeSent: messages[i].sender.created_at	
-			  		}
+			  		};
 			  		messagesArray.push(messagesObject);
 			  	}
 			  	// console.log(messages[0].sender.profile_image_url);
@@ -78,19 +79,19 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			      });
 			    }); // End page render
 			  } else {
-			    console.log('Error authenticating!')
+			    console.log('Error authenticating!');
 			  } 
 			});// End Get Messages
 		  } else {
-		    console.log('Error authenticating!')
+		    console.log('Error authenticating!');
 		  } 
 		});// End Get Recent followers   
 	  } else {
-	    console.log('Error authenticating!')
+	    console.log('Error authenticating!');
 	  } 
 	});// End Get User data
   } else {
-    console.log('Error authenticating!')
+    console.log('Error authenticating!');
   }
 }); // End Get Latest 5 tweets
 module.exports = router;
