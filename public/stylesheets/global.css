@@ -1234,12 +1234,18 @@ pre, blockquote, dl, figure, table, p, ul, ol, form {
   width: 100%;
   box-sizing: border-box;
 }
-
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
 /* line 8, ../sass/circle/core/_utilities.sass */
 .centered {
   float: none;
   margin: 0 auto;
   clear: both;
+}
+.red {
+  color: red;
 }
 
 /* line 13, ../sass/circle/core/_utilities.sass */

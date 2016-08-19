@@ -42,6 +42,6 @@ Twitter Interface - API with Node
 
 - [] If you add a post tweet feature, show new tweets on the page without refreshing.
 
-- [] Add an error page to your application, so that if anything goes wrong with your routes the user will see a friendly message rendered, instead of the default error code.
+- [X] Add an error page to your application, so that if anything goes wrong with your routes the user will see a friendly message rendered, instead of the default error code.
 
 - [X] Include your personal background image from Twitter as a background for the page header.

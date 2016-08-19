@@ -28,16 +28,14 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 		    likes: tweets[i].favorite_count
   		};
   		tweetsArray.push(tweetsObject);
-  	}
-       
+  	} 
     client.get('users/show', params, function(error, profile, response) {
 	  if (!error) {
 	  	var userAvatar = profile.profile_image_url;
 	    var userName = profile.screen_name;
 	    var realName = profile.name;
 	    var bannerImage = profile.profile_banner_url;  
-	    
-		
+	    var following = profile.friends_count;	
 	    client.get('friends/list', params, function(error, friends, response) {
 		  if (!error) {
 		  	var followersArray = [];
@@ -72,26 +70,21 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			        userAvatar: userAvatar,
 			        userName: userName,
 			        realName: realName,
+			        following: following,
 			        bannerImage: bannerImage,
 			        tweetsArray: tweetsArray,
 			        followersArray: followersArray,
 			        messagesArray: messagesArray
 			      });
 			    }); // End page render
-			  } else {
-			    console.log('Error authenticating!');
 			  } 
 			});// End Get Messages
-		  } else {
-		    console.log('Error authenticating!');
-		  } 
+		  }
 		});// End Get Recent followers   
-	  } else {
-	    console.log('Error authenticating!');
-	  } 
+	  }
 	});// End Get User data
-  } else {
-    console.log('Error authenticating!');
-  }
+  }// End If block
 }); // End Get Latest 5 tweets
+
+
 module.exports = router;
