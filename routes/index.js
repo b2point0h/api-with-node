@@ -31,7 +31,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
   	} 
     client.get('users/show', params, function(error, profile, response) {
 	  if (!error) {
-	  	var userAvatar = profile.profile_image_url;
+	  	var userAvatar = profile.profile_image_url_https;
 	    var userName = profile.screen_name;
 	    var realName = profile.name;
 	    var bannerImage = profile.profile_banner_url;  
@@ -45,7 +45,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 		  		followersObject = {
 		  			realName: friends.users[i].name,
 		  			userName: friends.users[i].screen_name,
-		  			userAvatar: friends.users[i].profile_image_url	
+		  			userAvatar: friends.users[i].profile_image_url_https	
 		  		};
 		  		followersArray.push(followersObject);
 		  	}
@@ -56,7 +56,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			  	
 			  	for (var i = 0; i < messages.length; i++) {
 			  		messagesObject = {
-			  			userAvatar: messages[i].sender.profile_image_url,
+			  			userAvatar: messages[i].sender.profile_image_url_https,
 			  			userMessage: messages[i].text,
 			  			userName: messages[i].sender.name,
 			  			timeSent: messages[i].sender.created_at	
