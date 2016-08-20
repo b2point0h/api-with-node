@@ -85,5 +85,12 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
   }// End If block
 }); // End Get Latest 5 tweets
 
+function postNewTweet(tweetParams) {
+	client.post('statuses/update', tweetParams, function (error, tweet, response) {
+		if (!error) {
+			console.log("Tweet Posted!");     
+		}
+	});
+}
 
 module.exports = router;
